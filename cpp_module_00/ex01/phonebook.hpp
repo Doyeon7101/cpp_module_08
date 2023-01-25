@@ -1,6 +1,7 @@
 #include <cstdlib>
 #include <iostream>
-#include <cstring>
+#include <cstring> // c스타일의 문자열 라이브러리
+#include <string> // to use string class
 #include <iomanip>
 
 class Phonebook
@@ -11,19 +12,6 @@ class Phonebook
 		std::string	m_Nickname;
 		std::string	m_PhoneNumber;
 		std::string	m_DarkestSecret;
-		void	add_func()
-		{
-			std::cout << "Add a contact to my phonebook ..." << std::endl;
-			std::cout << "first name: ";
-			std::cin >> m_FirstName;
-			std::cout << "last name: ";
-			std::cin >> m_LastName;
-			std::cout << "nickname: ";
-			std::cin >> m_Nickname;
-			std::cout << "phone number: ";
-			std::cin >> m_PhoneNumber;
-			std::cout << "darkest secret: ";
-			std::cin >> m_DarkestSecret;
-			std::cout << "Added successfully!"<< std::endl;
-		}
+
+		void	add_func();
 };

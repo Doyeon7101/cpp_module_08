@@ -1,6 +1,21 @@
 #include "phonebook.hpp"
-#include <iostream>
-#include <string>
+#include <stdexcept>
+
+void	Phonebook::add_func()
+{
+	std::cout << "Add a contact to my phonebook ..." << std::endl;
+	std::cout << "first name: ";
+	std::cin >> m_FirstName;
+	std::cout << "last name: ";
+	std::cin >> m_LastName;
+	std::cout << "nickname: ";
+	std::cin >> m_Nickname;
+	std::cout << "phone number: ";
+	std::cin >> m_PhoneNumber;
+	std::cout << "darkest secret: ";
+	std::cin >> m_DarkestSecret;
+	std::cout << "Added successfully!" << std::endl;
+}
 
 void put_phonebook(int i, Phonebook *contacts)
 {
@@ -21,20 +36,42 @@ void put_phonebook(int i, Phonebook *contacts)
 }
 void	search_phonebook(Phonebook *contacts, int i, int flg)
 {
-	int idx = -1;
-	std::string	input_idx;
 
 	if (flg)
 		i = flg;
 	put_phonebook(i, contacts);
 	std::cout << "enter an index...";
-	std::getline(std::cin, input_idx);
-	while(std::atoi(input_idx.c_str()) > 7)
+	std::string	input_idx;
+		while(1)
 	{
-		std::cout << "Error: worng index number" << std::endl;
-		std::getline(std::cin, input_idx);
+		try
+		{
+			getline(std::cin, input_idx);
+			if (std::cin.eof())
+			{
+				std::cin.clear();
+				std::clearerr(stdin);
+			}
+			const int idx = std::stoi(input_idx);
+			throw idx;
+		}
+		catch(std::invalid_argument const& ex)
+		{
+			std::cout << "Error: invalid_argument" << std::endl;
+		}
+		catch(std::out_of_range const& ex)
+		{
+			std::cout << "Error: out_of_range " << std::endl;
+		}
+		catch (int idx)
+		{
+			if (idx > 7)
+				std::cout << "Error: Wrong index number" << std::endl;
+			else
+				break;
+		}
 	}
-	std::cout << "phone number: " << contacts[atoi(input_idx.c_str())].m_PhoneNumber << std::endl;
+	std::cout << "phone number: " << contacts[std::stoi(input_idx)].m_PhoneNumber << std::endl;
 }
 
 int main(void)
@@ -43,13 +80,20 @@ int main(void)
 
 	int			i = 0;
 	int			flg = 0;
-	std::string	cmd;
 
+	std::string	cmd;
 	while(cmd != "EXIT")
 	{
-		std::cout << "phonebook: ready to command..." << std::endl;
+		if (cmd != "")
+			std::cout << "phonebook: ready to command(ADD, SEARCH, EXIT)..." << std::endl;
 		std::cin.clear();
+		std::clearerr(stdin);
 		std::getline(std::cin, cmd);;
+		if (std::cin.eof())
+		{
+			std::cin.clear();
+			std::clearerr(stdin);
+		}
 		if (cmd == "ADD")
 		{
 			phonebook[i].add_func();
@@ -67,6 +111,12 @@ int main(void)
 			else
 				std::cout << "Contact does not exist" << std::endl;
 		}
+		else
+		{
+			if (cmd != "")
+				std::cout << "Invalid command. Please check again." << std::endl;
+		}
+
 	}
 	std::cout << "bye ╲ʕ·ᴥ·　╲ʔ" << std::endl;
 	return 0;

@@ -1,11 +1,11 @@
-NAME = megaphone
+NAME = phonebook
 
 CC = clang++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
 
-SRC_FILES = megaphone.cpp
+SRC_FILES = phonebook.cpp
 
 SRC_OBJ = $(SRC_FILES:.cpp=.o)
 

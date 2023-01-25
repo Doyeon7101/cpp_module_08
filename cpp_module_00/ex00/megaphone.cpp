@@ -10,7 +10,7 @@ int main(int argc, char **argv)
 	while(*++argv)
 	{
 		char *str = *argv;
-		for (int x=0; x<strlen(str); x++)
+		for (int x = 0; x < (int)strlen(str); x++)
 			putchar(toupper(str[x]));
 		if (*(argv + 1))
 			std::cout << " ";
