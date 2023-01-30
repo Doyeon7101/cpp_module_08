@@ -82,18 +82,18 @@ int main(void)
 	int			flg = 0;
 
 	std::string	cmd;
-	while(cmd != "EXIT")
+	while(cmd != "EXIT" || std::cin.eof() == false)
 	{
 		if (cmd != "")
 			std::cout << "phonebook: ready to command(ADD, SEARCH, EXIT)..." << std::endl;
 		std::cin.clear();
 		std::clearerr(stdin);
 		std::getline(std::cin, cmd);;
-		if (std::cin.eof())
-		{
-			std::cin.clear();
-			std::clearerr(stdin);
-		}
+		/* if (std::cin.eof()) */
+		/* { */
+		/* 	std::cin.clear(); */
+		/* 	std::clearerr(stdin); */
+		/* } */
 		if (cmd == "ADD")
 		{
 			phonebook[i].add_func();
