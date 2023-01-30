@@ -18,6 +18,5 @@ void Contact::display()
 	std::cout<< "|" << std::setw(10) << std::setfill('@') << m_FirstName;
 	std::cout<< "|" << std::setw(10) << std::setfill('@') << m_LastName;
 	std::cout<< "|" << std::setw(10) << std::setfill('@') << m_Nickname << "|" << std::endl;
-	std::cout<<std::setw(14) << std::setfill('-') << std::endl;
 
 }

@@ -1,23 +1,27 @@
-#ifndef _ZOMBIE
-#define _ZOMBIE
+#ifndef _Zombie
+#define _Zombie
 
-#include	<iostream>
+#include <iostream>
 #include <string>
 
 class Zombie
 {
-	private:
-		std::string _name;
+private:
+	std::string m_name;
 
-	public:
-		Zombie(std::string name_input)
-			: _name(name_input)
-		{ announce(); }
-		~Zombie()
-		{ std:: cout << "<" << _name << ">" ;}
+public:
+	Zombie( const std::string& name_inpt )
+		: m_name(name_inpt)
+	{}
+	~Zombie()
+	{ std::cout << "Destructor called for <" << m_name << ">" <<std::endl; }
 
-		void	announce(void)
-		{ std::cout << "<" << _name << ">" << "BraiiiiiiinnnzzzZ..." << std::endl; }
+public:
+	void announce(void)
+	{ std::cout << "<" << m_name << ">" << " BraiiiiiiinnnzzzZ..." << std::endl; }
 };
+
+Zombie*	newZombie( std::string name );
+void		randomChump( std::string name );
 
 #endif

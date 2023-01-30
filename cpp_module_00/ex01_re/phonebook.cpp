@@ -2,37 +2,47 @@
 #include <iomanip>
 #include <string>
 
+std::string get_line()
+{
+	std::string rtn;
+	while (!std::cin.eof())
+	{
+		getline(std::cin, rtn);
+		if (std::cin.eof())
+			break;
+		if (rtn == "")
+			std::cout << "Invalid input format, try again" << std::endl;
+		else
+			return rtn;
+	}
+	exit(0);
+}
+
 void Phonebook::add(const int idx)
 {
 	std::string cmd[5] = {"first name: ", "last name: ", "nickname: ", "phonenumber: ", "DarkestSecret: "};
 	std::cout << "Add a contact to my phonebook ..." << std::endl;
-	std::string ipt;
 	std::cout << cmd[0] << std::endl;
-	getline(std::cin, ipt);
-	contacts[idx].setFirstName(ipt);
+	contacts[idx].setFirstName(get_line());
 	std::cout << cmd[1] << std::endl;
-	getline(std::cin, ipt);
-	contacts[idx].setLastName(ipt);
+	contacts[idx].setLastName(get_line());
 	std::cout << cmd[2] << std::endl;
-	getline(std::cin, ipt);
-	contacts[idx].setNicknName(ipt);
+	contacts[idx].setNicknName(get_line());
 	std::cout << cmd[3] << std::endl;
-	getline(std::cin, ipt);
-	contacts[idx].setPhoneNumber(ipt);
+	contacts[idx].setPhoneNumber(get_line());
 	std::cout << cmd[4] << std::endl;
-	getline(std::cin, ipt);
-	contacts[idx].setDarkestSecret(ipt);
-	std::cout <<"Added successfully!" << std::endl;
+	contacts[idx].setDarkestSecret(get_line());
+	std::cout << "Added successfully!" << std::endl;
 }
 
 void Phonebook::displayall(const int idx)
 {
 	std::cout << "|  Index   |First Name|Last Name | Nickname |" << std::endl;
+	std::cout << std::setw(46) << std::setfill('-') << '\0' << std::endl;
 	for(int i = 0; i < idx; i++)
 	{
-		std::cout<< "|" << std::setw(10) << std::setfill('@') << std::to_string(idx);
+		std::cout<< "|" << std::setw(10) << std::setfill(' ') << std::to_string(i);
 		contacts[i].display();
-		std::cout << std::setw(14) << std::setfill('-') << std::endl;
 	}
 }
 
@@ -44,6 +54,13 @@ void	Phonebook::search(const int i, const int flg)
 		return ;
 	}
 	displayall(i);
+	while(1)
+	{
+		try
+		{
+			std::string idx = get_line();
+		}
+	}
 
 }
 
@@ -54,11 +71,11 @@ int main()
 	int idx = 0;
 	int flg = 9;
 
-	do
+	while (cmd != "EXIT")
 	{
 		std::cin.clear();
 		std::clearerr(stdin);
-		std::getline(std::cin, cmd);
+		cmd = get_line();
 		if (cmd == "ADD")
 		{
 			phonebook.add(idx);
@@ -73,9 +90,11 @@ int main()
 		{
 			phonebook.search(idx, flg);
 		}
-
+		else if(cmd != "EXIT")
+		{
+			std::cout << "Invalid input format, try again" << std::endl;
+		}
 	}
-	while(std::cin.eof() == false || cmd != "EXIT");
 	std::cout << "bye" << std::endl;
 	return 0;
 }
