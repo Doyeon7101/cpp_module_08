@@ -14,14 +14,16 @@ class Contact
 		std::string	m_PhoneNumber;
 		std::string	m_DarkestSecret;
 	public:
-		Contact(void);
-		~Contact(void);
+		Contact( void );
+		~Contact( void );
+		int getPhoneNumber( void );
+		std::string setWidth( std::string str );
 		void display();
-		void setFirstName(std::string inpt);
-		void setLastName(std::string inpt);
-		void setNicknName(std::string inpt);
-		void setPhoneNumber(std::string inpt);
-		void setDarkestSecret(std::string inpt);
+		void setFirstName( std::string inpt );
+		void setLastName( std::string inpt );
+		void setNicknName( std::string inpt );
+		void setPhoneNumber( std::string inpt );
+		void setDarkestSecret( std::string inpt );
 };
 
 #endif

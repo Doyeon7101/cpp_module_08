@@ -2,5 +2,5 @@
 
 int main()
 {
-	Zombie *jason = new Zombie("jason");
+	Zombie z1("jason");
 }

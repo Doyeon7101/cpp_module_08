@@ -1,11 +1,11 @@
-NAME = phonebook
+NAME = Zombie
 
 CC = clang++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
 
-SRC_FILES = phonebook.cpp
+SRC_FILES = Zombie.cpp main.cpp newZombie.cpp randomChump.cpp
 
 SRC_OBJ = $(SRC_FILES:.cpp=.o)
 
@@ -29,3 +29,4 @@ re:
 	make all
 
 .PHONY: all clean fclean re
+

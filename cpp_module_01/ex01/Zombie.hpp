@@ -12,7 +12,8 @@ private:
 public:
 	Zombie( const std::string& name_inpt );
 	~Zombie();
-	void announce(void);
+	void announce( void );
+	void setName( const std::string Name );
 };
 
 Zombie*	newZombie( std::string name );

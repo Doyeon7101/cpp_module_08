@@ -1,7 +1,7 @@
 #include "Zombie.hpp"
 
 Zombie::Zombie( const std::string& name_inpt )
-	: m_name(name_inpt) {}
+{}
 Zombie::~Zombie()
 { std::cout << "Destructor called for <" << m_name << ">" <<std::endl; }
 
