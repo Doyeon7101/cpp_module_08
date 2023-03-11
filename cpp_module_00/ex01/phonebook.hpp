@@ -17,8 +17,8 @@ class Phonebook
 
 	public:
 		void	add(const int idx);
-		void	search(const int i, const int flg);
-		void  displayall(const int idx);
+		void	search(const int i);
+		void	displayall();
 };
 
 #endif

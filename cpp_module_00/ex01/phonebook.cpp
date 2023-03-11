@@ -46,25 +46,25 @@ void Phonebook::add(const int idx)
 	std::cout << "\033[1;32mAdded successfully!\033[0m" << std::endl;
 }
 
-void Phonebook::displayall(const int idx)
+void Phonebook::displayall(void)
 {
 	std::cout << "|  Index   |First Name|Last Name | Nickname |" << std::endl;
 	std::cout << std::setw(46) << std::setfill('-') << '\0' << std::endl;
-	for(int i = 0; i < idx; i++)
+	for(int i = 0; i < 8 && contacts[i].getPhoneNumber(); i++)
 	{
 		std::cout<< "|" << std::setw(10) << std::setfill(' ') << std::to_string(i);
 		contacts[i].display();
 	}
 }
 
-void	Phonebook::search(const int i, const int flg)
+void	Phonebook::search(const int i)
 {
-	if (!i)
+	if (!contacts[0].getPhoneNumber())
 	{
 		std::cout << "\033[0;32mContact does not exist\033[0m" << std::endl;
 		return ;
 	}
-	displayall(i);
+	displayall();
 	std::cout << "\033[0;32miput : invalid index number\033[0m" << std::endl;
 	int idx;
 	while(1)
@@ -72,7 +72,6 @@ void	Phonebook::search(const int i, const int flg)
 		try
 		{
 			idx = std::stoi(get_line());
-			std::cout << "idx : " << idx << std::endl;
 			throw idx;
 		}
 		catch(std::invalid_argument const& ex)
@@ -85,7 +84,7 @@ void	Phonebook::search(const int i, const int flg)
 		}
 		catch (int idx)
 		{
-			if (idx > 7 || idx > i - 1)
+			if (idx > 7 || !contacts[idx].getPhoneNumber())
 				std::cout << "\033[0;31mError: Wrong index number\033[0m" << std::endl;
 			else
 				break;
@@ -100,7 +99,6 @@ int main()
 	Phonebook phonebook;
 	std::string cmd;
 	int idx = 0;
-	int flg = 9;
 
 	while (cmd != "EXIT")
 	{
@@ -110,14 +108,11 @@ int main()
 			phonebook.add(idx);
 			idx++;
 			if (idx == 8)
-			{
 				idx = 0;
-				flg = 7;
-			}
 		}
 		else if(cmd == "SEARCH")
 		{
-			phonebook.search(idx, flg);
+			phonebook.search(idx);
 		}
 		else if(cmd != "EXIT")
 		{

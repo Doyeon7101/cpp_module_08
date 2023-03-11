@@ -14,7 +14,7 @@ void Contact::setPhoneNumber( std::string inpt ) { m_PhoneNumber = inpt; }
 void Contact::setDarkestSecret( std::string inpt ) { m_DarkestSecret = inpt; }
 
 int Contact::getPhoneNumber()
-{ return std::stoi(m_PhoneNumber); }
+{ return (m_PhoneNumber.empty()?0:stoi(m_PhoneNumber)); }
 
 std::string Contact::setWidth( std::string str )
 {
