@@ -1,7 +1,6 @@
 #include <iostream>
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
 	if (argc < 2)
 	{
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
@@ -9,8 +8,8 @@ int main(int argc, char **argv)
 	}
 	while(*++argv)
 	{
-		char *str = *argv;
-		for (int x = 0; x < (int)strlen(str); x++)
+		std::string str = *argv;
+		for (int x = 0; x < str.length(); x++)
 			putchar(toupper(str[x]));
 		if (*(argv + 1))
 			std::cout << " ";

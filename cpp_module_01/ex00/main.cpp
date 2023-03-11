@@ -2,5 +2,5 @@
 
 int main()
 {
-	Zombie z1("jason");
+	Zombie z1;
 }

@@ -10,8 +10,9 @@ private:
 	std::string m_name;
 
 public:
-	Zombie( const std::string& name_inpt );
+	Zombie();
 	~Zombie();
+	void setName( std::string& name_inpt);
 	void announce(void);
 };
 

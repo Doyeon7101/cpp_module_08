@@ -5,7 +5,8 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
 
-SRC_FILES = Zombie.cpp main.cpp zombieHorde.cpp
+SRC_FILES = main.cpp
+
 SRC_OBJ = $(SRC_FILES:.cpp=.o)
 
 all: $(NAME)
@@ -28,4 +29,5 @@ re:
 	make all
 
 .PHONY: all clean fclean re
+
 
