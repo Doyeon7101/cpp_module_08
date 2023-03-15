@@ -31,13 +31,14 @@ int		main( void ) {
 	ints_t::iterator	dep_begin	= deposits.begin();
 	ints_t::iterator	dep_end		= deposits.end();
 
-	int	const			w[]			= { 321, 34, 657, 4, 76, 275, 657, 7654 };
+	int	const			w[]			= { 321, 34, 657, 4, 76, 275, 657, 7654 }; //예금  출금
 	size_t const		w_size( sizeof(w) / sizeof(int) );
 	ints_t				withdrawals( w, w + w_size );
 	ints_t::iterator	wit_begin	= withdrawals.begin();
 	ints_t::iterator	wit_end		= withdrawals.end();
 
 	Account::displayAccountsInfos();
+	/**
 	std::for_each( acc_begin, acc_end, std::mem_fn( &Account::displayStatus ) );
 
 	for ( acc_int_t it( acc_begin, dep_begin );
@@ -61,6 +62,7 @@ int		main( void ) {
 	std::for_each( acc_begin, acc_end, std::mem_fn( &Account::displayStatus ) );
 
 	return 0;
+	**/
 }
 
 

@@ -35,7 +35,7 @@ void Phonebook::add(const int idx)
 	contacts[idx].setNicknName(get_line());
 	std::cout << cmd[3] << std::endl;
 	std::string phonenum_inpt = get_line();
-	while (phonenum_inpt.find_first_not_of("0123456789") != std::string::npos) //digit이 아닐경ㅇ, npos는 -1 rtn
+	while (phonenum_inpt.find_first_not_of("0123456789") != std::string::npos) //digit이 아닐경우, npos는 -1 rtn
 	{
 		std::cout << "\033[1;32mInvalid input format, try again\033[0m" << std::endl;
 		phonenum_inpt = get_line();
@@ -65,7 +65,7 @@ void	Phonebook::search(const int i)
 		return ;
 	}
 	displayall();
-	std::cout << "\033[0;32miput : invalid index number\033[0m" << std::endl;
+	std::cout << "\033[0;32mPlease enter a valid index number.\033[0m" << std::endl;
 	int idx;
 	while(1)
 	{

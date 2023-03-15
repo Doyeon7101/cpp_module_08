@@ -27,8 +27,8 @@ std::string Contact::setWidth( std::string str )
 
 void Contact::display()
 {
-	std::cout<< "|" << std::setw(10) << std::setfill('@') << setWidth(m_FirstName);
-	std::cout<< "|" << std::setw(10) << std::setfill('@') << setWidth(m_LastName);
-	std::cout<< "|" << std::setw(10) << std::setfill('@') << setWidth(m_Nickname) << "|" << std::endl;
+	std::cout<< "|" << std::setw(10) << std::setfill(' ') << setWidth(m_FirstName);
+	std::cout<< "|" << std::setw(10) << std::setfill(' ') << setWidth(m_LastName);
+	std::cout<< "|" << std::setw(10) << std::setfill(' ') << setWidth(m_Nickname) << "|" << std::endl;
 
 }
